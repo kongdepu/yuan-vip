@@ -5,7 +5,7 @@
       <div class="head clearfloat">
         <div class="logo clearfloat">
           <a href="/">
-            <em></em><span>向温柔投降</span>
+            <em></em><span>{{title}}</span>
           </a>
         </div>
         <div class="nav">
@@ -86,7 +86,7 @@
         </div>
         <div class="code">
           <div class="code_pic">天气快看</div>
-          <div class="code_text">
+          <div class="code_text" v-show="false">
             <Weather></Weather>
           </div>
         </div>
@@ -124,6 +124,8 @@ export default {
       contentText: '',
       // 切换QQ音乐
       isTencent: false,
+      // 标题
+      title: defaultSettings.title,
     };
   },
   props: {},
@@ -177,7 +179,7 @@ export default {
     },
     // 音乐盒
     soundBox() {
-      this.externalOpenLinks("/player");
+      this.externalOpenLinks("#/player");
     },
     // 网页跳转
     externalOpenLinks(url) {

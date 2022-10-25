@@ -5,7 +5,7 @@ const defaultSettings = require('./src/settings.js')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-const name = defaultSettings.title || '向温柔投降' // 页面标题
+const name = defaultSettings.title || '晴缘' // 页面标题
 
 // 端口号
 const port = process.env.port || process.env.npm_config_port || 8088 // dev port

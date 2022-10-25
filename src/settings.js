@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '向温柔投降',
+  title: '晴缘',
 
   /**
    * @type {String}
