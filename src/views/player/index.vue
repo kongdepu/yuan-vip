@@ -97,7 +97,7 @@ export default {
     },
     // 当媒介已开始播放/暂停时触发
     handleEvent(e){
-      // 媒介是否在播放（pause -- 暂停 | playing -- 播放）
+      // 媒介是否在播放(pause -- 暂停 | playing -- 播放)
       let type = e.type;
       // (running -- 播放动画 | paused -- 暂停动画)
       let sate = (type === 'playing' ? 'running' : 'paused');
@@ -205,10 +205,13 @@ $--play-state: var(--state, paused);
         border-radius: 5px;
     }
 }
-// 当屏幕宽度小于768px时
+// 当屏幕宽度小于768px时(移动端)
 @media only screen and (max-width: 768px) {
-  .app-container {
+  .app-container{
     padding: 0px;
+  }
+  .light_shadow_card{
+    padding: 1rem;
   }
 }
 </style>
