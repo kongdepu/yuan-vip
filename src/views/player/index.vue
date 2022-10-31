@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
 import { getSongList,getSongTencentList } from "@/api/get-song/index";
 export default {
   data() {
@@ -51,7 +52,7 @@ export default {
   components: {  },
   created() {
     // 初始化
-    this.getSongMethod();
+    this.init();
   },
   mounted() {
     // 响应式
@@ -67,6 +68,15 @@ export default {
     })
   },
   methods: {
+    // 初始化
+    init(){
+      this.getCookies();
+      this.isTencent ? this.getSongTencentMethod() : this.getSongMethod();
+    },
+    getCookies(){
+      const isTencent = Cookies.get("isTencent");
+      this.isTencent = isTencent === undefined ? false : Boolean(isTencent);
+    },
     // 获取网易云音乐歌单
     getSongMethod(){
       getSongList('7594375387').then((response) => {
@@ -82,6 +92,7 @@ export default {
     // 切换音乐源触发
     isTencentChange(event){
       event ? this.getSongTencentMethod() : this.getSongMethod();
+      Cookies.set("isTencent", event, { expires: 30 });
     },
     // 歌词格式化
     lyricsFormatting(data) {
