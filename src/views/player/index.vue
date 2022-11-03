@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="app-header">
-      <h2 :data-text="title" class="streamer_font">{{title}}</h2>
+      <h2 :data-text="title" class="streamer_font" >{{title}}</h2>
     </div>
     <div class="light_shadow_card">
       <span>音乐盒</span>
@@ -20,7 +20,7 @@
         :lrcType="3"
         :volume.sync="volume"
         :listMaxHeight="350"
-        theme="#a8efff"
+        :theme="theme"
         @playing="handleEvent"
         @pause="handleEvent"
         @error="handleError"
@@ -43,6 +43,8 @@ export default {
       volume: 0.7,
       // 切换QQ音乐
       isTencent: false,
+      // 主题颜色
+      theme: '#a8efff'
     };
   },
   props: {},
@@ -66,6 +68,7 @@ export default {
         this.$refs.aplayer.toggle();  
       }
     })
+    console.log(document.getElementsByClassName("streamer_font")[0].style.getPropertyValue("--color"));
   },
   methods: {
     // 初始化
@@ -108,6 +111,8 @@ export default {
     },
     // 当媒介已开始播放/暂停时触发
     handleEvent(e){
+      // 修改网页标题
+      document.title = `QingYuan | ${this.$refs.aplayer.currentMusic.name}`;
       // 媒介是否在播放(pause -- 暂停 | playing -- 播放)
       let type = e.type;
       // (running -- 播放动画 | paused -- 暂停动画)

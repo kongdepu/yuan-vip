@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import test from "@/views/test"
 import Weather from "./weather";
 import { getSongList,getSongTencentList } from "@/api/get-song/index";
 import { getText } from "@/api/get-text/index";
@@ -132,7 +133,7 @@ export default {
   watch: {},
   computed: {},
   filters: {},
-  components: { Weather, },
+  components: { Weather,test },
   created() {
     this.init();
   },
